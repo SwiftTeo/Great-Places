@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E22547162093BD1100506A94 /* PlacesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22547152093BD1100506A94 /* PlacesTableViewController.swift */; };
+		E22547182093BD1D00506A94 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = E22547172093BD1D00506A94 /* Place.swift */; };
 		E2D004732091BB3500B8C86F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D004722091BB3500B8C86F /* AppDelegate.swift */; };
 		E2D004752091BB3500B8C86F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2D004742091BB3500B8C86F /* ViewController.swift */; };
 		E2D004782091BB3500B8C86F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E2D004762091BB3500B8C86F /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E22547152093BD1100506A94 /* PlacesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlacesTableViewController.swift; sourceTree = "<group>"; };
+		E22547172093BD1D00506A94 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 		E2D0046F2091BB3500B8C86F /* Great Places.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Great Places.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E2D004722091BB3500B8C86F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E2D004742091BB3500B8C86F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -35,6 +39,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E22547192093BD2A00506A94 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				E22547152093BD1100506A94 /* PlacesTableViewController.swift */,
+				E22547172093BD1D00506A94 /* Place.swift */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		E2D004662091BB3500B8C86F = {
 			isa = PBXGroup;
 			children = (
@@ -57,6 +70,7 @@
 				E2D004722091BB3500B8C86F /* AppDelegate.swift */,
 				E2D004742091BB3500B8C86F /* ViewController.swift */,
 				E2D004762091BB3500B8C86F /* Main.storyboard */,
+				E22547192093BD2A00506A94 /* Supporting Files */,
 				E2D004792091BB3600B8C86F /* Assets.xcassets */,
 				E2D0047B2091BB3600B8C86F /* LaunchScreen.storyboard */,
 				E2D0047E2091BB3600B8C86F /* Info.plist */,
@@ -137,6 +151,8 @@
 			files = (
 				E2D004752091BB3500B8C86F /* ViewController.swift in Sources */,
 				E2D004732091BB3500B8C86F /* AppDelegate.swift in Sources */,
+				E22547162093BD1100506A94 /* PlacesTableViewController.swift in Sources */,
+				E22547182093BD1D00506A94 /* Place.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
