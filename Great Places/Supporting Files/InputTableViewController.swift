@@ -8,7 +8,7 @@
 
 import UIKit
 
-class InputTableViewController: UITableViewController {
+class InputTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var tf_name: UITextField!
     @IBOutlet weak var tf_phone: UITextField!
@@ -72,13 +72,38 @@ class InputTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+     
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if indexPath.row == 3{
+            showActionSheet()
+        }
+    }
+    
+    func showActionSheet(){
+        
+        let alertController = UIAlertController(title: "Select Photo", message: "Add a Photo to Your Place", preferredStyle: UIAlertControllerStyle.actionSheet)
+        
+        let camera = UIAlertAction(title: "Camera", style: UIAlertActionStyle.default) { (action) in
+            
+        }
+        
+        let photo = UIAlertAction(title: "Photo", style: UIAlertActionStyle.default) { (action) in
+            
+        }
+
+        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+        
+        alertController.addAction(camera)
+        alertController.addAction(photo)
+        alertController.addAction(cancelAction)
+        
+        present(alertController, animated: true, completion: nil)
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
