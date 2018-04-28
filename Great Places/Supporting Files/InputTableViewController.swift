@@ -30,12 +30,31 @@ class InputTableViewController: UITableViewController {
             print(plistdictionary)
             
             do{
-                var plistarray = [[String:Any]]()
-                plistarray.append(plistdictionary)
+               
                 
                 if let url = Place.placesurl(){
+                    var plist:Any?
+                    
+                    if let indata = try? Data(contentsOf: url){
+                        plist = try? PropertyListSerialization.propertyList(from: indata, options: [], format: nil)
+                    }
+                    else{
+                        plist = nil
+                    }
+                    
+                    
+                    var plistarray = [[String:Any]]()
+                    
+                    if let array = plist as? [[String:Any]]{
+                        plistarray = array
+                    }
+                    
+                    plistarray.append(plistdictionary)
+                    
                     let data = try PropertyListSerialization.data(fromPropertyList: plistarray, format: .xml, options: 0)
+                    
                     try data.write(to: url, options: .atomic)
+                    
                     dismiss(animated: true, completion: nil)
                 }
                 else{
