@@ -23,6 +23,30 @@ class PlacesTableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
+        places.removeAll()
+        do{
+            if let url = Place.placesurl(){
+                
+                let data = try Data(contentsOf: url)
+                let plist = try PropertyListSerialization.propertyList(from: data, options: [], format: nil)
+                
+                
+                if let array = plist as? [[String:Any]]{
+                    
+                    for dictinonary in array{
+                        let place = Place(dictionary: dictinonary)
+                        places.append(place)
+                    }
+                    tableView.reloadData()
+                    
+                }
+            }// if let url = Place.placesurl
+            
+        }//do
+        catch{
+            print(error.localizedDescription)
+        }
+        
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
