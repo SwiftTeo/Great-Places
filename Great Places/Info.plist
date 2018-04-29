@@ -34,6 +34,12 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+	<key>NSCameraUsageDescription</key>
+	<string>Add a Photo to Your Place from Your Camera.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Add a Photo from Your Photo Library.</string>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>This Enables the App to Provide Your Place with Coordinates.</string>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

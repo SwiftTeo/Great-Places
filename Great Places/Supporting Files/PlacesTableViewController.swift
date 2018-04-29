@@ -74,6 +74,15 @@ class PlacesTableViewController: UITableViewController {
         let date = Date(timeIntervalSince1970: place.timestamp)
         cell.detailTextLabel?.text = dateformatter.string(from: date)
 
+        if let imagename = place.imagename, let imageurl = Place.imageurl(imagename: imagename){
+            
+            if let imagedata = try? Data(contentsOf: imageurl){
+                let image = UIImage(data: imagedata)
+                cell.imageView?.contentMode = .scaleAspectFill
+                cell.imageView?.image = image
+            }
+        }
+        
         return cell
     }
     
