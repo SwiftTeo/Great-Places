@@ -19,6 +19,21 @@ class PlacesTableViewController: UITableViewController {
         dateformatter.dateStyle = DateFormatter.Style.medium
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if segue.identifier == "showDetail"{
+            guard let destinationViewController = segue.destination as? DetailViewController else{
+                print("DestinationVeiwController is not the DetailViewController")
+                return
+            }
+            guard let selectedIndexPath = tableView.indexPathForSelectedRow else{
+                print("Nothing Selected")
+                return
+            }
+            destinationViewController.place = places[selectedIndexPath.row]
+        }
+        
+    }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)

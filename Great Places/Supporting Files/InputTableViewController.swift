@@ -9,8 +9,11 @@
 import UIKit
 import CoreLocation
 
-class InputTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class InputTableViewController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, CLLocationManagerDelegate {
 
+    let locationManager = CLLocationManager()
+    var location:CLLocation?
+    
     @IBOutlet weak var tf_name: UITextField!
     @IBOutlet weak var tf_phone: UITextField!
     @IBOutlet weak var tf_website: UITextField!
@@ -39,7 +42,7 @@ class InputTableViewController: UITableViewController, UIImagePickerControllerDe
                 }
             }
             
-            let place = Place(name: name, imagename: imagename, phone: tf_phone.text, website: tf_website.text)
+            let place = Place(name: name, imagename: imagename, phone: tf_phone.text, coordinate: location?.coordinate, website: tf_website.text)
             let plistdictionary = place.plistDictionary()
             print(place)
             print(plistdictionary)
@@ -87,9 +90,51 @@ class InputTableViewController: UITableViewController, UIImagePickerControllerDe
     override func viewDidLoad() {
         super.viewDidLoad()
 
-     
+        locationManager.delegate = self
+        
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        requestLocationServices()
     }
 
+    func requestLocationServices(){
+        
+        guard CLLocationManager.locationServicesEnabled() else{
+            print("Location Services not Enabled")
+            return
+        }
+        guard CLLocationManager.authorizationStatus() != .restricted else{
+            print("Authorizationstatus Restricted")
+            return
+        }
+        guard CLLocationManager.authorizationStatus() != .denied else{
+            print("Authorizationstatus Denied")
+            return
+        }
+        if CLLocationManager.authorizationStatus() == .notDetermined{
+            print("Authorizationstatus not Determined")
+            locationManager.requestWhenInUseAuthorization()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        
+        if status == .authorizedWhenInUse{
+            print("Authorized When in Use")
+            locationManager.startUpdatingLocation()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+        
+        if let location = locations.last{
+            print("Location: \(location)")
+            self.location = location
+            locationManager.stopUpdatingLocation()
+        }
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if indexPath.row == 3{
