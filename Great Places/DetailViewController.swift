@@ -60,7 +60,8 @@ class DetailViewController: UIViewController {
             websiteButton.setTitle(website, for: UIControlState.normal)
         }
         else{
-            websiteButton.setTitle("", for: UIControlState.normal)
+            //websiteButton.setTitle("", for: UIControlState.normal)
+            websiteButton.isHidden = true
         }
        
         
@@ -69,7 +70,8 @@ class DetailViewController: UIViewController {
             phoneButton.setTitle(phone, for: UIControlState.normal)
         }
         else{
-            phoneButton.setTitle("", for: UIControlState.normal)
+            //phoneButton.setTitle("", for: UIControlState.normal)
+            phoneButton.isHidden = true
         }
        
         
