@@ -22,6 +22,25 @@ class DetailViewController: UIViewController {
     
     @IBOutlet weak var mapView: MKMapView!
     
+    @IBAction func phoneAction(_ sender: UIButton) {
+        
+        guard let str = sender.titleLabel?.text, let url = URL(string: "telprompt://\(str)") else{
+            return
+        }
+        
+        UIApplication.shared.open(url)
+        
+    }
+    
+    @IBAction func websiteAction(_ sender: UIButton) {
+        
+        guard let str = sender.titleLabel?.text, let url = URL(string: str) else{
+            print("URL konnte nicht erzeugt werden.")
+            return
+        }
+        UIApplication.shared.open(url)
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
